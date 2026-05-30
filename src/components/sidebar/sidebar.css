@@ -1,0 +1,89 @@
+.app-sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 260px;
+  background: linear-gradient(180deg, #162331, #0f1924);
+  border-right: 1px solid rgba(255,255,255,.08);
+  color: #fff;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  transition: width .25s ease, transform .25s ease;
+  box-shadow: 14px 0 45px rgba(0,0,0,.16);
+}
+.app-sidebar.collapsed { width: 84px; }
+.sidebar-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 18px; }
+.sidebar-brand { border: 0; background: transparent; color: #fff; display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 1.1rem; cursor: pointer; padding: 8px; border-radius: 14px; }
+.brand-icon { width: 42px; height: 42px; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; background: #008080; box-shadow: 0 12px 25px rgba(0,128,128,.25); }
+.sidebar-toggle { border: 0; background: rgba(255,255,255,.08); color: #fff; width: 38px; height: 38px; border-radius: 12px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.sidebar-link { display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,.74); padding: 12px; border-radius: 14px; font-weight: 700; transition: .2s ease; white-space: nowrap; }
+.sidebar-link:hover, .sidebar-link.active { background: rgba(0,128,128,.24); color: #fff; transform: translateX(2px); }
+.sidebar-user { border-top: 1px solid rgba(255,255,255,.10); padding-top: 14px; display: flex; align-items: center; gap: 12px; min-height: 72px; }
+.user-avatar { width: 42px; height: 42px; border-radius: 50%; background: #f7f5f0; color: #162331; display: flex; align-items: center; justify-content: center; font-weight: 900; }
+.user-meta { min-width: 0; }
+.user-meta strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.user-meta span { color: rgba(255,255,255,.60); font-size: .82rem; }
+.sidebar-logout { margin-top: 10px; border: 0; background: rgba(255,255,255,.08); color: #fff; padding: 12px; border-radius: 14px; display: flex; gap: 12px; align-items: center; cursor: pointer; font-weight: 800; }
+.sidebar-logout:hover { background: rgba(211,60,60,.28); }
+.mobile-sidebar-button { display: none; position: fixed; top: 18px; left: 18px; z-index: 45; border: 0; width: 46px; height: 46px; border-radius: 14px; background: #162331; color: #fff; box-shadow: var(--shadow); }
+.mobile-only { display: none; }
+.sidebar-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 49; }
+
+@media (max-width: 900px) {
+  .app-sidebar { transform: translateX(-105%); width: 280px; }
+  .app-sidebar.mobile-open { transform: translateX(0); }
+  .app-sidebar.collapsed { width: 280px; }
+  .mobile-sidebar-button { display: inline-flex; align-items: center; justify-content: center; }
+  .desktop-only { display: none; }
+  .mobile-only { display: inline-flex; }
+}
+
+.sidebar-user-button {
+  width: calc(100% - 24px);
+  margin: 12px;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+}
+.sidebar-user-button:hover { background: rgba(255,255,255,.10); }
+
+/* Evita que el botón de usuario herede el fondo blanco del navegador */
+.sidebar-user-button {
+  background: rgba(255,255,255,.07) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,.10) !important;
+  border-radius: 16px;
+  width: 100%;
+  margin: 12px 0 0;
+  padding: 12px;
+}
+.sidebar-user-button:hover {
+  background: rgba(0,128,128,.22) !important;
+}
+.sidebar-user-button .user-meta strong,
+.sidebar-user-button .user-meta span {
+  color: inherit;
+}
+
+/* Usuario del sidebar: evita fondos blancos y mantiene paleta oscura */
+.sidebar-user-button,
+.sidebar-user-button:focus,
+.sidebar-user-button:active {
+  background: linear-gradient(135deg, rgba(0,128,128,.30), rgba(15,25,36,.98)) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(126,224,216,.22) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+}
+.sidebar-user-button .user-avatar {
+  background: #008080 !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 18px rgba(0,128,128,.26);
+}
+.sidebar-user-button .user-meta strong {
+  color: #ffffff !important;
+}
+.sidebar-user-button .user-meta span {
+  color: rgba(255,255,255,.72) !important;
+}
